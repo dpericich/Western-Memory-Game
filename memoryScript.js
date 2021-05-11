@@ -5,7 +5,8 @@ const grid = document.querySelector(".grid")
 // const playingCard = document.querySelectorAll('.playing-card')
 const playingCardBack = document.querySelectorAll('.playing-card-back')
 const cardsLinks = ["cards/boots.jpg", "cards/money.jpg", "cards/pistol.jpg", "cards/snake.jpg", "cards/villan.jpg", "cards/boots.jpg", "cards/money.jpg", "cards/pistol.jpg", "cards/snake.jpg", "cards/villan.jpg" ]
-const displayBanner = document.querySelector('.display-banner')
+const displayBannerWin = document.querySelector('.display-banner-win');
+const displayBannerLose = document.querySelector('.display-banner-lose');
 let cardsArray = []
 
 // Game Constants
@@ -20,11 +21,19 @@ const updateScore = () => {
 }
 
 const displayWinBanner = () => {
-  displayBanner.classList.remove('hidden');
+  displayBannerWin.classList.remove('hidden');
 }
 
 const hideWinBanner = () => {
-  displayBanner.classList.add("hidden");
+  displayBannerWin.classList.add("hidden");
+}
+
+const displayLoseBanner = () => {
+  displayBannerLose.classList.remove("hidden")
+}
+
+const hideLoseBanner = () => {
+  displayBannerLose.classList.add("hidden")
 }
 
 const addCardToSelected = (event) => {
@@ -149,6 +158,7 @@ const resetGame = () => {
   // Reset Cards Remaining Counter to 10
   // Reset Guesses Counter to 0
   hideWinBanner();
+  hideLoseBanner();
 }
 
 // Game Logic

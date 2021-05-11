@@ -69,11 +69,20 @@ p {
   display: none;
 }
 
-.display-banner {
+.display-banner-win {
   background: linear-gradient( to right, #90EE90,green);
   width: 100%;
   text-align: center;
   padding: 2rem 0rem;
   color: white;
+  font-size: 2rem;
+}
+
+.display-banner-lose {
+  background: linear-gradient( to right, rgb(214, 87, 87), red);
+  width: 100%;
+  text-align: center;
+  padding: 2rem 0rem;
+  color: black;
   font-size: 2rem;
 }
