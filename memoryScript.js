@@ -62,7 +62,6 @@ const eventFlipCard = (event) => {
 }
 
 const removeCardFromPlay = (id) => {
-  console.log("I was called")
   const playingCard = document.querySelector(`[data-id="${id}"]`);
   playingCard.removeEventListener('click', flipCard, true);
   playingCard.removeEventListener('click', addCardToSelected, true);
@@ -123,7 +122,11 @@ const resetGrid = () => {
 // Game Rules
 
 const updateScore = () => {
-  cardCount.innerHTML = parseInt(cardCount.textContent) - 2
+  cardCount.innerHTML = parseInt(cardCount.textContent) - 2;
+}
+
+const resetScore = () => {
+  cardCount.innerHTML = 10;
 }
 
 const updateGuesses = () => {
@@ -132,21 +135,18 @@ const updateGuesses = () => {
   guessCount.innerHTML = guesses;
 }
 
-const incrementCount = () => {
-  let previousCount = parseInt(cardCount.textContent);
-  let newCount = previousCount + 1;
-  cardCount.innerHTML = newCount;
+const resetGuesses = () => {
+  guessCount.innerHTML = 0;
 }
 
 
 const addCardToSelected = (event) => {
-  // Add logic to check if card is already in
   const selectedCard = event.target
   if (selectedCards.length < 1) {
     selectedCards.push(selectedCard)
-    console.log(selectedCards)
   } else {
     compareCards(selectedCards[0], selectedCard)
+    updateGuesses();
   }
 }
 
@@ -163,22 +163,19 @@ const compareCards = (selectedCard1, selectedCard2) => {
     updateScore();
     updateGuesses();
     emptySelectedCards();
-    console.log(cardCount)
     if(cardCount.innerHTML === "0") {
       displayWinBanner();
     }
-  } else if (card1.name !== card2.name && parseInt(guessCount) >= 8) {
+  } else if (parseInt(guessCount.innerHTML) > 8) {
     displayLoseBanner();
   } else {
-    flipCard(card1.id);
-    flipCard(card2.id);
-    emptySelectedCards();
+    setTimeout(() => {
+      flipCard(card1.id);
+      flipCard(card2.id);
+      emptySelectedCards();
+    }, 1000)
   }
 }
-
-
-
-
 
 const resetGame = () => {
   resetGrid();
@@ -190,12 +187,14 @@ const resetGame = () => {
   hideWinBanner();
   hideLoseBanner();
   selectedCards = [];
+  resetScore();
+  resetGuesses();
 }
 
 // Setup Events
 resetButton.addEventListener("click", resetGame)
 
 // Create Playing Grid
-populateDeck();
-const finalDeck = shuffleDeck(cardsArray)
-populateGameGrid(finalDeck)
+// populateDeck();
+// const finalDeck = shuffleDeck(cardsArray)
+// populateGameGrid(finalDeck)
