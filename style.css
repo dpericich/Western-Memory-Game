@@ -57,7 +57,7 @@ p {
   padding: 5px 10px;
   border-radius: 5rem;
   outline: none;
-  box-shadow: 5px 5px black;
+  box-shadow: 2.5px 2.5px black;
 }
 
 .btn:active {
