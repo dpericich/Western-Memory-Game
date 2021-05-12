@@ -1,24 +1,25 @@
-// Declare all variable for page
-const cardCount = document.querySelector(".cards_count");
-const resetButton = document.querySelector(".reset");
+///////////////////////////////////////////////////////
+//////////////////   VARIABLES   //////////////////////
+///////////////////////////////////////////////////////
+
+
+// Game Components
 const grid = document.querySelector(".grid")
-// const playingCard = document.querySelectorAll('.playing-card')
-const playingCardBack = document.querySelectorAll('.playing-card-back')
-const cardsLinks = ["cards/boots.jpg", "cards/money.jpg", "cards/pistol.jpg", "cards/snake.jpg", "cards/villan.jpg", "cards/boots.jpg", "cards/money.jpg", "cards/pistol.jpg", "cards/snake.jpg", "cards/villan.jpg" ]
 const displayBannerWin = document.querySelector('.display-banner-win');
 const displayBannerLose = document.querySelector('.display-banner-lose');
-let cardsArray = []
+const resetButton = document.querySelector(".reset");
+
+// Card Components
+const playingCardBack = document.querySelectorAll('.playing-card-back');
+const cardsLinks = ["cards/boots.jpg", "cards/money.jpg", "cards/pistol.jpg", "cards/snake.jpg", "cards/villan.jpg", "cards/boots.jpg", "cards/money.jpg", "cards/pistol.jpg", "cards/snake.jpg", "cards/villan.jpg" ];
 
 // Game Constants
-const selectedCards = []
-const correctGuessIds = []
+const cardCount = document.querySelector(".cards_count");
+const guessCount = document.querySelector('.guess_count');
+let selectedCards = [];
+let cardsArray = [];
 
-const currentGuesses = document.querySelector('.current_guesses')
-// currentGuesses.innerHTML = selectedCards.length || 0
 
-const updateScore = () => {
-  cardCount.innerHTML = parseInt(cardCount.textContent) - 2
-}
 
 const displayWinBanner = () => {
   displayBannerWin.classList.remove('hidden');
