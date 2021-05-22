@@ -146,7 +146,6 @@ const addCardToSelected = (event) => {
     selectedCards.push(selectedCard)
   } else {
     compareCards(selectedCards[0], selectedCard)
-    updateGuesses();
   }
 }
 
@@ -166,13 +165,14 @@ const compareCards = (selectedCard1, selectedCard2) => {
     if(cardCount.innerHTML === "0") {
       displayWinBanner();
     }
-  } else if (parseInt(guessCount.innerHTML) > 8) {
+  } else if (parseInt(guessCount.innerHTML) >= 10) {
     displayLoseBanner();
   } else {
     setTimeout(() => {
       flipCard(card1.id);
       flipCard(card2.id);
       emptySelectedCards();
+      updateGuesses();
     }, 1000)
   }
 }
