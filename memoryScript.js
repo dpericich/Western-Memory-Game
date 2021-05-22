@@ -63,8 +63,8 @@ const eventFlipCard = (event) => {
 
 const removeCardFromPlay = (id) => {
   const playingCard = document.querySelector(`[data-id="${id}"]`);
-  playingCard.removeEventListener('click', flipCard, true);
-  playingCard.removeEventListener('click', addCardToSelected, true);
+  playingCard.removeEventListener('click', eventFlipCard);
+  playingCard.removeEventListener('click', addCardToSelected);
   playingCard.classList.add("playing-card-disabled")
 }
 
