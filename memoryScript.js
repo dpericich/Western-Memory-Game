@@ -167,13 +167,14 @@ const compareCards = (selectedCard1, selectedCard2) => {
     }
   } else if (parseInt(guessCount.innerHTML) >= 10) {
     displayLoseBanner();
+    // TODO: Fix this so it flips over the cards when a new card is selected
   } else {
+    emptySelectedCards();
+    updateGuesses();
     setTimeout(() => {
       flipCard(card1.id);
       flipCard(card2.id);
-      emptySelectedCards();
-      updateGuesses();
-    }, 1000)
+    }, 500)
   }
 }
 
@@ -193,8 +194,3 @@ const resetGame = () => {
 
 // Setup Events
 resetButton.addEventListener("click", resetGame)
-
-// Create Playing Grid
-// populateDeck();
-// const finalDeck = shuffleDeck(cardsArray)
-// populateGameGrid(finalDeck)
